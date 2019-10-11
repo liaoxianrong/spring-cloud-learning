@@ -1,0 +1,30 @@
+server:
+  port: 8761
+
+spring:
+  security:
+    user:
+      name: lxr
+      password: lxr
+  application:
+    name: lxr-cloud-eureka-server
+  profiles:
+    active: dev
+  #需要关闭配置中心，因为eureka server是需要最先启动的，配置中心也要向它注册
+  cloud:
+    config:
+      enabled: false
+eureka:
+  instance:
+    hostname: lxr-eureka
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://lxr:lxr@${eureka.instance.hostname}:${server.port}/eureka/
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -1,0 +1,30 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: lxr-cloud-config-server
+#  profiles:
+#    active: native
+#  # 配置中心
+#  cloud:
+#    config:
+#      server:
+#        native:
+#          search-locations: classpath:/config/
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/liaoxianrong/spring-cloud-config-repo
+          searchPaths: learning
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://lxr:lxr@lxr-eureka:8761/eureka/
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

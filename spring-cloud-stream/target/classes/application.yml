@@ -1,0 +1,14 @@
+server:
+  port: 8909
+
+spring:
+  kafka:
+    bootstrap-servers: 192.168.4.102:9092
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: test-topic-0924
+          group: lxrgroup0924
+        output:
+          destination: test-topic-0924

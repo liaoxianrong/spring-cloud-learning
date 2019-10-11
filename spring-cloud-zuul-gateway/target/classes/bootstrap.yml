@@ -1,0 +1,25 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: lxr-cloud-zuul
+  profiles:
+    active: dev
+  # 配置中心
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      uri: http://127.0.0.1:8888
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://lxr:lxr@lxr-eureka:8761/eureka/
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

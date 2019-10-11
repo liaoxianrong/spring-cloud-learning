@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /demo2
+
+spring:
+  application:
+    name: lxr-cloud-demo2
+  profiles:
+    active: dev,mysql
+  # 配置中心
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      uri: http://127.0.0.1:8888
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://lxr:lxr@lxr-eureka:8761/eureka/
